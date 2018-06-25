@@ -32,7 +32,8 @@ def Time_series(name,time,output,type):
         print_time_series(data,name,time,type)
     elif(type=='Monthly'):
         data, meta_data = ts.get_monthly(symbol=name)
-        print_time_series(data,name,time,type)
+        #print_time_series(data,name,time,type)
+        description(data,name,time,type)
     elif(type=='Monthly Adjusted'):
         data, meta_data = ts.get_monthly_adjusted(symbol=name)
         print_time_series(data,name,time,type)
@@ -49,6 +50,16 @@ def print_time_series(data,name,time,type):
     plt.grid()
     plt.legend()
     plt.show()
+
+def description(data,name,time,type):
+    print('Mean of '+type+' Times Series for the '+name+' stock ('+time+')')
+    print(data.describe())
+    print('Variance of '+type+' Times Series for the '+name+' stock ('+time+')')
+    print(data.var())
+    print('Range of '+type+' Times Series for the '+name+' stock ('+time+')')
+    print(data.max()-data.min())
+    print('Median of '+type+' Times Series for the '+name+' stock ('+time+')')
+    print(data.median())
 
 
 
