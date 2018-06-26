@@ -38,7 +38,7 @@ def Time_series(name,time,output,type):
         data, meta_data = ts.get_monthly_adjusted(symbol=name)
         print_time_series(data,name,time,type)
 
-def print_time_series(data,name,time,type):
+def print_plotting_chart(data,name,time,type):
     prices = data.drop('5. volume',1)
     data['date'] = pd.to_datetime(data.index)
     plt.plot(data['date'],data['1. open'],label='1. open')
