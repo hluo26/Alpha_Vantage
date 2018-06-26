@@ -17,10 +17,12 @@ def main():
 
 
 def Time_series(name,time,output,type):
-    ts = TimeSeries(key=API_key, output_format='pandas')
+    #ts = TimeSeries(key=API_key, output_format='pandas')
+    ts = TimeSeries(key=API_key)
     if(type=='Intraday'):
         data, meta_data = ts.get_intraday(symbol=name,interval=time, outputsize=output)
-        print_time_series(data,name,time,type)
+        #print_time_series(data,name,time,type)
+        return data
     elif(type=='Day Adjusted'):
         data, meta_data = ts.get_daily_adjusted(symbol=name,outputsize=output)
         print_time_series(data,name,time,type)
